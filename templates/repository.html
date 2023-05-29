@@ -1,0 +1,42 @@
+{% extends 'profile.html'%}
+{% block repo %}
+{% load static %}
+
+<h2 class="res-head">REPOSITORY</h2>
+<!-- project -->
+{% for i in val %}
+<div class="project">
+    <!-- <div><img src="{% static '' %}" alt=""></div> -->
+    <div class="project-data">
+        <h2 class="project-header">{{i.name}}</h2>
+        <h5 class="text">{{i.desc}}</h5><br>
+        <a href="abstract?id={{i.id}}"><button class="link">Link</button></a>
+    </div>   
+</div>
+    {% endfor %}
+    <dialog  class="connect"  id="connect"><br>
+        <h1>Abstract</h1>
+        <p>In today's online world, internet advertising is a significant marketing tool. Traditional advertising systems fail to meet the needs of varied users since they display advertisements without taking into account the individual's characteristics. At present, the advertisements are queued using the previous search history and activities of the user, but human interests change very frequently and these advertisements were displayed without regard for the viewer's emotions, potentially degrading the user experience. In this paper, we introduce an improved advertising system that predicts the user's sentiment based on the genre of the material being viewed and queues advertisements accordingly. Advertisements are chosen based on the user's history and Collaborative Advertising. Users with similar interests will be found within the region, and the user's top click rate adverts will be presented to the current user. This will enhance the user experience and the quality of the advertisements will<br>Human interests vary rapidly, according to psychologists, and this is one of the flaws in the system because it can only make suggestions based on the user's present interests. The existing system never considers the current state of mind of the user. If the user was in a negative mood, then the advertisement will not have any impact on the user in turn it frustrates the user. </p>
+        <div class="content">
+        <h4>Connect</h4>
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/"><i class="fa fa-github"></i></a>
+        </div>
+</dialog>
+<script>
+   
+    const cmodel = document.querySelector('#connect');
+    const copenModel = document.querySelector('.starts');
+    const ccloseModel = document.querySelector('.ended');
+    openModel.addEventListener('click',()=> {
+        cmodel.showModal();
+    })
+    closeModel.addEventListener('click', ()=>{
+        cmodel.close();
+    })
+
+
+</script>
+    
+{% endblock %}

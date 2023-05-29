@@ -1,0 +1,46 @@
+{% extends 'profile.html'%}
+{% block repo %}
+{% load static %}
+<style>
+    .abt h1{
+    margin-left: 55%;
+}
+.abt {
+    font-family: 'Karla', sans-serif;
+    color: #fff;
+}
+.abt p{
+    margin-left: 30%;
+}
+.content i{
+   font-size: 30px;
+   color: #664EAE;
+   margin-left: 10%;
+
+}
+.content{
+    margin-left: 50%;
+}
+.content h4{
+    margin-left: 20%;
+    font-family: 'Karla', sans-serif;
+}
+.abstract_btn{
+    margin-left: 50%;
+}
+</style>
+    <div class="abt">
+        <h1 >Abstract</h1>
+        <p >{{val}}</p>
+        
+        <div class="abstract_btn">
+        <a href="/delete?id={{id}}"><button type="button" class="btn btn-dark en">Delete Project</button></a>
+        </div><br><br>
+        <div class="content">
+        <h4>Connect</h4>
+        <a href=""><i class="fa fa-envelope"></i></a>
+        <a href=""><i class="fa fa-linkedin"></i></a>
+        <a href="https://github.com/"><i class="fa fa-github"></i></a>
+        </div>
+    </div>
+{% endblock %}

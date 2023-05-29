@@ -1,0 +1,291 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GrantBase.gov.in</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=Karla:wght@800&family=Raleway:wght@600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/sty.css' %}">
+  <style>
+    .dropdown .search-area {
+      box-sizing: border-box;
+      background-image: url("searchicon.png");
+      background-position: 14px 12px;
+      background-repeat: no-repeat;
+      font-size: 16px;
+      padding-top: 5px;
+      border: none;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .dropdown .search-area:focus {
+      outline: 3px solid #ddd;
+    }
+
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      left: 35px;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      overflow: auto;
+      border: 1px solid #ddd;
+      z-index: 1;
+    }
+
+    .dropdown-content span {
+      color: black;
+      padding-top: 5px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown span:hover {
+      background-color: #ddd;
+    }
+
+    .show {
+      display: block;
+    }
+
+    input#search_input {
+      min-width: 191px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- nav -->
+  <section class="heading">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark ">
+      <div class="container-fluid">
+
+        <h1>GrantBase</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="login">Login</a>
+            </li>
+
+          </ul>
+          </ul>
+        </div>
+    </nav>
+  </section>
+
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img
+          src="https://imgs.search.brave.com/0ClMpIK8Hic_8CkJ3ag5IMHWY_GJQkvvEbWxqLD1EVY/rs:fit:844:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5m/M2ZyTlNhdXBpQXNh/TnNVX1YwUWpnSGFF/SyZwaWQ9QXBp"
+          class="d-block w-100" alt="...">
+      </div>
+
+    </div>
+    <!-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button> -->
+  </div>
+  <!-- Grants -->
+  <div class="grants">
+    <h1>Grants Details</h1><br>
+    <div class="pad-drop">
+      
+    <div class="dropdown"><label>Domain:</label>
+      <input onclick="openSearchDropdown()" id="search_input" placeholder="Domain" />
+      <div id="myDropdown" class="dropdown-content">
+        <input type="text" placeholder="Search.." id="search_value" onkeyup="filterSearchDropdown()"
+          class="search-area" />
+          <span data-value="all" onclick="selectFilteredValue()">All</span>
+        <span data-value="Education & Literacy" onclick="selectFilteredValue()">Education & Literacy</span>
+        <span data-value="Health & Family Welfare" onclick="selectFilteredValue()">Health & Family Welfare</span>
+        <span data-value="Children" onclick="selectFilteredValue()">Children</span>
+        <span data-value="Women's Development & Empowerment" onclick="selectFilteredValue()">Women's Development &
+          Empowerment</span>
+        <span data-value="Vocational Training" onclick="selectFilteredValue()">Vocational Training</span>
+        <span data-value="Environment & Forests" onclick="selectFilteredValue()">Environment & Forests</span>
+        <span data-value="Art & Culture" onclick="selectFilteredValue()">Art & Culture</span>
+        <span data-value="Rural Development & Poverty Alleviation" onclick="selectFilteredValue()">Rural Development &
+          Poverty Alleviation</span>
+        <span data-value="Agriculture" onclick="selectFilteredValue()">Agriculture</span>
+        <span data-value="Drinking Water" onclick="selectFilteredValue()">Drinking Water</span>
+        <span data-value="Human Rights" onclick="selectFilteredValue()">Human Rights</span>
+        <span data-value="Youth Affairs" onclick="selectFilteredValue()">Youth Affairs</span>
+        <span data-value="Aged/Elderly" onclick="selectFilteredValue()">Aged/Elderly</span>
+        <span data-value="Labour & Employment" onclick="selectFilteredValue()">Labour & Employment</span>
+        <span data-value="HIV/AIDS" onclick="selectFilteredValue()">HIV/AIDS</span>
+        <span data-value="Animal Husbandry; Dairying & Fisheries" onclick="selectFilteredValue()">Animal Husbandry;
+          Dairying & Fisheries</span>
+        <span data-value="Differently Abled" onclick="selectFilteredValue()">Differently Abled</span>
+        <span data-value="Any Other" onclick="selectFilteredValue()">Any Other</span>
+        <span data-value="Information & Communication Technology" onclick="selectFilteredValue()">Information &
+          Communication Technology</span>
+        <span data-value="Disaster Management" onclick="selectFilteredValue()">Disaster Management Advocacy</span>
+          <span data-value="New & Renewable Energy" onclick="selectFilteredValue()">New & Renewable Energy</span>
+          <span data-value="Housing" onclick="selectFilteredValue()">Housing</span>
+          <span data-value="Land Resources" onclick="selectFilteredValue()">Land Resources</span>
+          <span data-value="Tourism" onclick="selectFilteredValue()">Tourism</span>
+          <span data-value="Scientific & Industrial Research" onclick="selectFilteredValue()">Scientific & Industrial
+            Research</span><span data-value="Skill Development" onclick="selectFilteredValue()">Skill
+            Development</span>
+          <span data-value="Prisoner's Issues" onclick="selectFilteredValue()">Prisoner's Issues</span> <span
+            data-value="CSR" onclick="selectFilteredValue()">CSR</span>
+      </div>
+      </div>
+      <!-- <div ><label>Indian/Global</label>
+      <select name="cars" class="nat">
+        <option value="opel">All</option>
+      <option value="volvo">National</option>
+      <option value="saab">International</option>
+       </select>
+      </div> -->
+      <div>
+        <a class="btn enb" href=""type="submit">Submit</a>
+      </div>
+     </div><br>
+
+    <div class="search">
+      <input type="search" placeholder="Search" id="search" value="">
+      <button type="submit" onclick="search();"><i class="fa fa-search"></i></button>
+    </div><br>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Attachment</th>
+        <th>Fund Provided</th>
+      </tr>
+      {% for i in data%}
+      <tr id="">
+        <td>{{i.name}}</td>
+        <td>{{i.From_Date}}</td>
+        <td id="dead"><span style="{{i.style}}">{{i.To_Date}}</span></td>
+        <td><a href="{{i.lst}}"><i class="fa fa-arrow-up"></i></a></td>
+        <td>{{i.invest}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+  </div>
+  {% if data.has_other_pages %}
+  <ul class="pagination" style="color: white;">
+    {% if data.has_previous %}
+    <li class="left-arrow"><a href="?page={{ data.previous_page_number }}" >&laquo;</a></li>
+    {% else %}
+    <li class="disabled"><span>&laquo;</span></li>
+    {% endif %}
+    {% for i in data.paginator.page_range %}
+    {% if data.number == i %}
+    <li class="active no"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+    {% else %}
+    <li class="no"><a href="?page={{ i }}">{{ i }}</a></li>
+    {% endif %}
+    {% endfor %}
+    {% if data.has_next %}
+    <li class="left-arrow"><a href="?page={{ data.next_page_number }}">&raquo;</a></li>
+    {% else %}
+    <li class="disabled"><span>&raquo;</span></li>
+    {% endif %}
+  </ul>
+  {% endif %}
+  <!-- footer -->
+  <footer class="colored-section" id="footer">
+    <div>
+
+    </div>
+    <div class="container-fluid">
+      <a href=""><i class="fa fa-envelope icon"></i></a>
+      <a href=""><i class="fa fa-linkedin icon"></i></a>
+      <a href="https://github.com/"><i class="fa fa-github icon"></i></a>
+
+      <p>© Copyright 2022 AICTE</p>
+    </div>
+  </footer>
+  <script>
+    function search() {
+      const search_Data = document.getElementById("search").value;
+      window.open("http://127.0.0.1:8000/?keywords=" + search_Data, "_self");
+    }
+
+    function myFunction() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function filterFunction() {
+      var input, filter, ul, li, a, i;
+      input = document.getElementById("myInput");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      a = div.getElementsByTagName("a");
+      for (i = 0; i < a.length; i++) {
+        txtValue = a[i].textContent || a[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          a[i].style.display = "";
+        } else {
+          a[i].style.display = "none";
+        }
+      }
+    }
+    function openSearchDropdown() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function closeSearchDropdown() {
+      document.getElementById("myDropdown").classList.toggle("show");
+    }
+
+    function selectFilteredValue() {
+      document.getElementById("search_input").value = event.target.getAttribute("data-value");
+      closeSearchDropdown();
+    }
+
+    function filterSearchDropdown() {
+      var input, filter, ul, li, span, i;
+      input = document.getElementById("search_value");
+      filter = input.value.toUpperCase();
+      div = document.getElementById("myDropdown");
+      span = div.getElementsByTagName("span");
+      for (i = 0; i < span.length; i++) {
+        txtValue = span[i].textContent || span[i].innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          span[i].style.display = "";
+        } else {
+          span[i].style.display = "none";
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>
